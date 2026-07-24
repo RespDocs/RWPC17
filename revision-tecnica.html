@@ -2,116 +2,149 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Revisión técnica</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
+<title>SOAP</title>
 
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px;
-            background: #fff;
-            box-shadow: 0 2px 6px #0003;
-        }
+<style>
 
-        h1 {
-            flex: 1;
-            text-align: center;
-            font-size: 20px;
-            margin: 0;
-        }
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+}
 
-        .btn {
-            text-decoration: none;
-            background: #1976d2;
-            color: #fff;
-            padding: 10px 14px;
-            border-radius: 8px;
-            font-size: 14px;
-        }
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:12px;
+    background:#fff;
+    box-shadow:0 2px 6px rgba(0,0,0,.2);
+}
 
-        iframe {
-            flex: 1;
-            width: 100%;
-            border: 0;
-        }
-    </style>
+h1{
+    flex:1;
+    text-align:center;
+    font-size:20px;
+    margin:0;
+}
+
+.btn{
+    text-decoration:none;
+    background:#1976d2;
+    color:#fff;
+    padding:10px 14px;
+    border-radius:8px;
+    font-size:14px;
+}
+
+iframe{
+    flex:1;
+    width:100%;
+    border:0;
+}
+
+</style>
+
 </head>
 
 <body>
 
 <script>
-    // ===================================
-    // SOLO MODIFICAR ESTE DATO
-    // ===================================
-    const CONFIG = {
-        patente: "RWPC17"
-    };
 
+// ===================================
+// CAMBIAR SEGÚN LA PATENTE
+// ===================================
 
-    // ===================================
-    // VARIABLES AUTOMATICAS
-    // ===================================
-    const BASE_URL = `https://respdocs.github.io/${CONFIG.patente}/`;
-    const PDF = `RT-${CONFIG.patente}.pdf`;
+const PATENTE = "RWPC17";
+
+// ===================================
+// CAMBIAR SEGÚN EL NOMBRE DEL DOCUMENTO
+// ===================================
+
+const DOCUMENTO = "Revisión Técnica";
+
+// ===================================
+// CAMBIAR SEGÚN EL CÓDIGO DEL DOCUMENTO
+//
+// SOAP = SOAP
+// PC   = Permiso de Circulación
+// RT   = Revisión Técnica
+// RG   = Revisión de Gases
+// INS  = Certificado de Inscripción
+// ===================================
+
+const CODIGO_DOCUMENTO = "RT";
+
+// ===================================
+// NO MODIFICAR
+// ===================================
+
+const PDF_ARCHIVO =
+    `${CODIGO_DOCUMENTO}-${PATENTE}.pdf`;
+
+const GHP =
+    `https://respdocs.github.io/${PATENTE}`;
+
+const WP =
+    `https://respdocs-auth.rhz-respaldocs.workers.dev/${PATENTE}`;
+
+const PDF =
+    `${GHP}/${PDF_ARCHIVO}`;
 
 </script>
 
-
 <header>
 
-    <a class="btn" id="volver">
+    <a
+        class="btn"
+        id="volver">
         🏠 Volver
     </a>
 
-
     <h1>
-        Revision técnica <span id="patente"></span>
+        <span id="documento"></span>
+        <span id="patente"></span>
     </h1>
 
-
-    <a class="btn" id="descargar" download>
+    <a
+        class="btn"
+        id="descargar"
+        download>
         📥 Descargar
     </a>
 
 </header>
 
-
 <iframe id="visor"></iframe>
-
-
 
 <script>
 
-    // Configuración automática de enlaces
+// ===================================
+// NO MODIFICAR
+// ===================================
 
-    document.getElementById("volver").href = BASE_URL;
+document.getElementById("volver").href =
+    WP;
 
-    document.getElementById("descargar").href = PDF;
+document.getElementById("descargar").href =
+    PDF;
 
-    document.getElementById("visor").src =
-        PDF + "#toolbar=0&navpanes=0";
+document.getElementById("visor").src =
+    PDF + "#toolbar=0&navpanes=0";
 
+document.getElementById("documento").textContent =
+    DOCUMENTO;
 
-    // Mostrar patente en pantalla
-
-    document.getElementById("patente").textContent =
-        CONFIG.patente;
-
+document.getElementById("patente").textContent =
+    PATENTE;
 
 </script>
-
 
 </body>
 
