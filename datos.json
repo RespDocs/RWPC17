@@ -1,0 +1,29 @@
+{
+  "patente": "RWPC17",
+  "marca": "Chery",
+  "modelo": "Tiggo 2 Pro",
+  "anio": 2022,
+  "url": "https://respdocs.github.io/RWPC17/",
+  "documentos": [
+    {
+      "id": "pc",
+      "nombre": "Permiso de Circulación",
+      "vence": "2027-03-31"
+    },
+    {
+      "id": "soap",
+      "nombre": "Seguro Obligatorio (SOAP)",
+          "vence": "2027-03-31"
+    },
+    {
+      "id": "rt",
+      "nombre": "Revisión Técnica",
+        "vence": "2027-10-31"
+    },
+    {
+      "id": "rg",
+      "nombre": "Revisión de Gases",
+      "vence": "2027-10-31"
+    }
+  ]
+}
